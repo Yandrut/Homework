@@ -4,6 +4,6 @@ public class CurrencyConverter implements Converter {
 
     @Override
     public int convert(int numberToConvert) {
-        return (int) (numberToConvert * 37.5);
+        return (int) (numberToConvert * 37.5f);
     }
 }
