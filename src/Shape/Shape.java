@@ -1,6 +1,6 @@
 package Shape;
 
 public interface Shape {
-    int getArea();
-    int getPerimeter();
+    double getArea();
+    double getPerimeter();
 }
