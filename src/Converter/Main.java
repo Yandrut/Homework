@@ -19,13 +19,12 @@ public class Main {
 
 
             switch (input) {
-
                 case "0":
                     in.close();
                     return;
                 case "1":
                     System.out.print("Enter number to convert : ");
-                    Converter converter = TemperatureConverterFactory.getConverter('f');
+                        Converter converter = TemperatureConverterFactory.getConverter('f');
                     int toConvert = in.nextInt();
                     System.out.println(toConvert + " Fahrenheit In Celsius is: " + converter.convert(toConvert));
                     break;
