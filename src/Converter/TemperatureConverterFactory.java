@@ -1,7 +1,6 @@
 package Converter;
 
 public class TemperatureConverterFactory {
-   private TemperatureConverterFactory () {}
 
    public static Converter getConverter (char option) {
        if (option == 'c' ||  option == 'C') {
@@ -13,5 +12,4 @@ public class TemperatureConverterFactory {
             return null;
        }
    }
-
 }
