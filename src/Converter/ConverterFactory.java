@@ -10,7 +10,7 @@ public class ConverterFactory {
        } else if (option.equals("currency")) {
            return new CurrencyConverter();
        } else {
-          throw new IllegalArgumentException("Converter was not found");
+          throw new IllegalArgumentException("Converter was not found!");
        }
    }
     }

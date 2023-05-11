@@ -6,10 +6,8 @@ public class Main {
 
     public static void main(String[] args) {
         while (true) {
-            Scanner in = new Scanner(System.in);
-            int toConvert;
             Converter converter;
-
+            Scanner in = new Scanner(System.in);
             System.out.println();
             System.out.println("--- Choose action ---");
             System.out.println("f : Convert fahrenheit to celsius");
@@ -20,20 +18,19 @@ public class Main {
             System.out.println("Enter action: ");
             String input = in.nextLine();
 
-            try {
-                if (input.equals("0")) {
-                    in.close();
-                    return;
-                }
+            if (input.equals("0")) {
+                in.close();
+                return;
+            }
+                try {
                 converter = ConverterFactory.getConverter(input);
                 System.out.println("Enter number to convert: ");
-                toConvert = in.nextInt();
+                int toConvert = in.nextInt();
                 System.out.println("Result: " + converter.convert(toConvert));
             } catch (IllegalArgumentException e) {
-                System.out.println(e.getMessage());
+                    System.out.println(e.getMessage());
+                }
             }
         }
-
     }
-}
 
