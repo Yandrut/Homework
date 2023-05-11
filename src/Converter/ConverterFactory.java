@@ -8,10 +8,13 @@ public class ConverterFactory {
        } else if (option == 'f' || option == 'F')
            return new FahrenheitToCelsius();
        else {
-           return null;
+          throw new IllegalArgumentException("Converter was not found");
        }
    }
         public static Converter getConverter (String option) {
-            return new CurrencyConverter();
-   }
-}
+            if (option.equals("currency")) {
+                return new CurrencyConverter();
+            }
+            throw new IllegalArgumentException("Converter was not found");
+        }
+    }
