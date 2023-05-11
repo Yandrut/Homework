@@ -24,21 +24,21 @@ public class Main {
                     return;
                 case "1":
                     System.out.print("Enter number to convert : ");
-                        Converter converter = TemperatureConverterFactory.getConverter('f');
+                        Converter converter = ConverterFactory.getConverter('f');
                     int toConvert = in.nextInt();
                     System.out.println(toConvert + " Fahrenheit In Celsius is: " + converter.convert(toConvert));
                     break;
                 case "2":
                     System.out.print("Enter number to convert : ");
-                    Converter converter1 = TemperatureConverterFactory.getConverter('c');
+                    converter = ConverterFactory.getConverter('c');
                     toConvert = in.nextInt();
-                    System.out.println(toConvert + " Celsius In Fahrenheit is: " + converter1.convert(toConvert));
+                    System.out.println(toConvert + " Celsius In Fahrenheit is: " + converter.convert(toConvert));
                     break;
                 case "3":
-                    Converter currencyConverter = new CurrencyConverter();
+                    converter = ConverterFactory.getConverter("currency");
                     System.out.print("Enter amount of Dollars you have: ");
                     toConvert = in.nextInt();
-                    System.out.println(toConvert + " In Hryvnias is: " + currencyConverter.convert(toConvert));
+                    System.out.println(toConvert + " In Hryvnias is: " + converter.convert(toConvert));
                     break;
             }
         }
