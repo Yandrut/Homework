@@ -15,8 +15,8 @@ public class TextFile implements FileReader {
                 content += line + "\n";
             }
             reader.close();
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
         }
         return content;
     }
