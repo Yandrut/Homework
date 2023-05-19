@@ -3,7 +3,8 @@ package FileReader;
 public class Main {
     public static void main(String[] args) {
         TextFile textFile = new TextFile();
-        System.out.println(textFile.read("/home/digital/Завантаження/Java Projects/Interfaces/src/FileReader/input.txt"));
+        textFile.writeToFile("input.txt", "Eritis sicus Deus, scientes bonum et malum");
+        System.out.println(textFile.read("input.txt"));
 
     }
 }

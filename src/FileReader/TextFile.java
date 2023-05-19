@@ -1,7 +1,5 @@
 package FileReader;
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.IOException;
+import java.io.*;
 
 public class TextFile implements FileReader {
     @Override
@@ -19,5 +17,14 @@ public class TextFile implements FileReader {
             System.out.println(e.getMessage());
         }
         return content;
+    }
+    public void writeToFile (String fileName, String content) {
+        try {
+            BufferedWriter writer = new BufferedWriter(new FileWriter(fileName, true));
+            writer.write("\n" + content);
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
