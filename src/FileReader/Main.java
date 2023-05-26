@@ -5,6 +5,5 @@ public class Main {
         TextFile textFile = new TextFile();
         textFile.writeToFile("input.txt", "Eritis sicus Deus, scientes bonum et malum");
         System.out.println(textFile.read("input.txt"));
-
     }
 }

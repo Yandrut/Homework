@@ -21,7 +21,7 @@ public class TextFile implements FileReader {
     public void writeToFile (String fileName, String content) {
         try {
             BufferedWriter writer = new BufferedWriter(new FileWriter(fileName, true));
-            writer.write("\n" + content);
+            writer.write("\t" + "\n" + content);
             writer.close();
         } catch (IOException e) {
             e.printStackTrace();
