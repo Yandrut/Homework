@@ -3,7 +3,7 @@ package Annotations.C;
 import java.lang.reflect.Method;
 
 public class Main {
-    @Test
+   
     public static void main(String[] args) {
         try {
             Method method = Methods.class.getDeclaredMethod("test");
