@@ -4,7 +4,7 @@ import java.lang.reflect.Method;
 
 public class Main {
     @Test
-    public static void main(String[] args) throws NoSuchMethodException {
+    public static void main(String[] args) {
         try {
             Method method = Methods.class.getDeclaredMethod("test");
             if (method.getParameterCount() > 0 || (!(method.getReturnType().equals(void.class)))) {

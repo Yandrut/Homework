@@ -13,6 +13,6 @@ public class Methods {
         System.out.println("Wello Horld");
     }
     public static void test (Main main) {
-        System.out.println(main.equals(new Object()));
+        System.out.println(main.equals(new Main()));
     }
 }
