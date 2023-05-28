@@ -1,17 +1,18 @@
 package Annotations.C;
 
+import java.lang.reflect.Method;
+
 public class Main {
     @Test
-    public static void main(String[] args){
-        System.out.println("Wello Horld");
+    public static void main(String[] args) throws NoSuchMethodException {
+        try {
+            Method method = Methods.class.getDeclaredMethod("test");
+            if (method.getParameterCount() > 0 || (!(method.getReturnType().equals(void.class)))) {
+                throw new IllegalArgumentException("Wrong method here");
+            }
+            Methods.test();
+        } catch (Exception exception) {
+            exception.printStackTrace();
+        }
     }
 }
-
-
-/**
- Створіть анотацію @Test,
- що може бути використана для методів без параметрів та повернення void.
- Напишіть тестовий код,
- який використовує цю анотацію, і клас,
- який виконує ці методи в порядку їх оголошення в класі.
- **/
