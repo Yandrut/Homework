@@ -18,6 +18,11 @@ public class TestClass {
         System.out.println(this.toString());
     }
     @Test
+    public void divideByZero () {
+        int result = 1488/0;
+        System.out.println(result);
+    }
+    @Test
     public void mySecondTest() {
         System.out.println("mySecondTest is working");
     }

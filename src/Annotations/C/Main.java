@@ -14,12 +14,16 @@ public class Main {
             TestClass newInstanceObject = (TestClass) instance;
             Method[] methodsArray = methods.getClass().getDeclaredMethods();
                 for (Method method : methodsArray) {
-                    Annotation annotation = method.getAnnotation(Test.class);
-                            if (annotation != null &&
+                            if (method.isAnnotationPresent(Test.class) &&
                                 method.getParameterCount() == 0 &&
                                 method.getReturnType().equals(void.class)) {
-                                     method.invoke(newInstanceObject);
-                            }   else if (annotation != null) {
+                                try {
+                                    method.invoke(newInstanceObject);
+                                    System.out.println(method.getName() + " successfully passed");
+                                } catch (Exception e) {
+                                    System.out.println("Internal error: " + method.getName() + ". " + e.getCause());
+                                }
+                            }   else if (method.isAnnotationPresent(Test.class)) {
                                     System.out.println("Method error: " + method.getName() + ". Return type: " + method.getReturnType() + ". Number of parameters: " + method.getParameterCount());
                         }
                     }
