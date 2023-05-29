@@ -1,17 +1,16 @@
 package Annotations.C;
-
-public class Methods {
+@SuppressWarnings("unused")
+public class TestClass {
+    public TestClass(String initArgs) {}
     @Test
-    public static int testParameter () {
+    public void secondTest () {
         System.out.println("testParameter is working");
-        return 1;
     }
-    public static int[] testInt(int ... ints) {
+    public int[] testInt(int ... ints) {
         return ints;
     }
-
     @Test
-    public static void test() {
+    public void myFirstTest() {
         System.out.println("Test is working");
     }
     @Test
