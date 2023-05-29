@@ -3,16 +3,12 @@ package Annotations.C;
 public class TestClass {
     public TestClass(String initArgs) {}
     @Test
-    public void secondTest () {
-        System.out.println("testParameter is working");
+    public void firstTest () {
+        System.out.println("firstTest is working");
     }
     @Test
     public int[] testInt(int ... ints) {
         return ints;
-    }
-    @Test
-    public void myFirstTest() {
-        System.out.println("Test is working");
     }
     @Test
     public void nothing (int [] nums) {
@@ -21,4 +17,9 @@ public class TestClass {
     public void testWithNoAnnotation () {
         System.out.println(this.toString());
     }
+    @Test
+    public void mySecondTest() {
+        System.out.println("mySecondTest is working");
+    }
+
 }
