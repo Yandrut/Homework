@@ -13,8 +13,4 @@ public class TestClass {
     public void myFirstTest() {
         System.out.println("Test is working");
     }
-    @Test
-    public boolean equals(Object obj) {
-        return this.getClass() == obj.getClass();
-    }
 }
