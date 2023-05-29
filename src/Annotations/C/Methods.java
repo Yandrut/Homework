@@ -1,7 +1,9 @@
 package Annotations.C;
 
 public class Methods {
-    public static int testParameter (int n) {
+    @Test
+    public static int testParameter () {
+        System.out.println("testParameter is working");
         return 1;
     }
     public static int[] testInt(int ... ints) {
@@ -10,9 +12,10 @@ public class Methods {
 
     @Test
     public static void test() {
-        System.out.println("Wello Horld");
+        System.out.println("Test is working");
     }
-    public static void test (Main main) {
-        System.out.println(main.equals(new Main()));
+    @Test
+    public boolean equals(Object obj) {
+        return this.getClass() == obj.getClass();
     }
 }
