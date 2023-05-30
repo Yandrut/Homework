@@ -1,6 +1,5 @@
 package Annotations.C;
 
-import java.lang.annotation.Annotation;
 import java.lang.reflect.*;
 
 public class Main {
