@@ -13,22 +13,23 @@ public class Main {
             Object instance = constructor.newInstance("String");
             TestClass newInstanceObject = (TestClass) instance;
             Method[] methodsArray = methods.getClass().getDeclaredMethods();
-                for (Method method : methodsArray) {
-                            if (method.isAnnotationPresent(Test.class) &&
-                                method.getParameterCount() == 0 &&
-                                method.getReturnType().equals(void.class)) {
-                                try {
-                                    method.invoke(newInstanceObject);
-                                    System.out.println(method.getName() + " successfully passed");
-                                } catch (Exception e) {
-                                    System.out.println("Internal error: " + method.getName() + ". " + e.getCause());
-                                }
-                            }   else if (method.isAnnotationPresent(Test.class)) {
-                                    System.out.println("Method error: " + method.getName() + ". Return type: " + method.getReturnType() + ". Number of parameters: " + method.getParameterCount());
-                        }
+            for (Method method : methodsArray) {
+                if (method.isAnnotationPresent(Test.class) &&
+                        method.getParameterCount() == 0 &&
+                        method.getReturnType().equals(void.class)) {
+                    try {
+                        method.invoke(newInstanceObject);
+                        System.out.println(method.getName() + " successfully passed");
+                    } catch (Exception e) {
+                        System.out.println("Failed: " + method.getName() + ". " + e.getMessage());
+                        e.printStackTrace();
                     }
-                } catch (Exception exception) {
-                        exception.printStackTrace();
+                } else if (method.isAnnotationPresent(Test.class)) {
+                    System.out.println("Method error: " + method.getName() + ". Return type: " + method.getReturnType() + ". Number of parameters: " + method.getParameterCount());
+                }
+            }
+        } catch (Exception exception) {
+            exception.printStackTrace();
         }
     }
 }
