@@ -11,7 +11,7 @@ public class Main {
         System.out.println("Enter second number: ");
         float two = scanner.nextFloat();
 
-        System.out.println(Operation.Division.execute(one,two));
+        System.out.println(Operation.DIVISION.execute(one,two));
 
     }
 

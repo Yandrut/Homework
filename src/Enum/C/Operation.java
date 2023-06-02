@@ -1,19 +1,19 @@
 package Enum.C;
 
 public enum Operation {
-    Addition {
+    ADDITION {
         @Override
         public float execute (float one, float two) {
             return one + two;
         }
     },
-    Subtraction {
+    SUBTRACTION {
         @Override
         public float execute (float one, float two) {
             return one - two;
         }
     },
-    Division {
+    DIVISION {
         @Override
         public float execute(float one, float two) {
             float result = 0;
@@ -25,7 +25,7 @@ public enum Operation {
             return result;
         }
     },
-    Multiplication {
+    MULTIPLICATION {
         @Override
         public float execute(float one, float two) {
             return one * two;

@@ -1,10 +1,10 @@
 package Enum.A;
 @SuppressWarnings("unused")
 public enum Days {
-    Sunday,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday;
+    SUNDAY,MONDAY,TUESDAY,WEDNESDAY,THURSDAY,FRIDAY,SATURDAY;
 
     public static boolean isDayOff(Days day) {
-        return (day.equals(Days.Sunday) || day.equals(Days.Saturday));
+        return (day.equals(Days.SUNDAY) || day.equals(Days.SATURDAY));
     }
 
 }
