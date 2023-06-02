@@ -1,7 +1,5 @@
 package Enum.A;
 
-import java.util.ArrayList;
-
 @SuppressWarnings("unused")
 public enum Days {
     SUNDAY, MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY;
