@@ -2,15 +2,13 @@ package MyList;
 
 public class Main {
     public static void main(String[] args) {
-        MyArrayList<String> myArrayList = new MyArrayList<String>();
-        myArrayList.add("Something");
-        myArrayList.add("like");
-        myArrayList.add("a");
-        myArrayList.add("String");
+        MyArrayList<String> list = new MyArrayList<String>();
+        list.add("Way");
+        list.add("Day");
+        list.add("Wife");
+        list.add("Knife");
 
-        System.out.println(myArrayList.contains("String"));
-        System.out.println(myArrayList.get(3));
-        System.out.println(myArrayList.size());
-
+        System.out.println(list.set(3,"May"));
+        System.out.println(list.get(3));
     }
 }

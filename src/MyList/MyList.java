@@ -5,4 +5,9 @@ public interface MyList <T> {
     T get (int index);
     int size();
     boolean contains (Object obj);
+    T remove(int index);
+    boolean remove(Object o);
+    int indexOf(Object o);
+    boolean isEmpty();
+    T set(int index, T element);
 }
