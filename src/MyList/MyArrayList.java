@@ -12,7 +12,7 @@ public class MyArrayList<T> implements MyList<T> {
     @Override
     public void add(T t) {
         if (size == myArrayList.length) {
-            T[] tempArray = (T[]) new Object[size + 3];
+            T[] tempArray = (T[]) new Object[size + size/3];
             for (int i = 0; i < size(); i++) {
                 tempArray[i] = myArrayList[i];
             }
@@ -23,7 +23,7 @@ public class MyArrayList<T> implements MyList<T> {
     }
     @Override
     public T get(int index) {
-        if (index < size) {
+        if (index < size && index >= 0) {
             return myArrayList[index];
         }
         throw new IndexOutOfBoundsException("Index " + index + " out of bounds for length " + size);
@@ -34,13 +34,11 @@ public class MyArrayList<T> implements MyList<T> {
     }
     @Override
     public boolean contains(Object toFind) {
-        if (toFind != null) {
             for (int i = 0; i < size; i++) {
                 if (myArrayList[i].equals(toFind)) {
                     return true;
                 }
             }
-        }
         return false;
     }
     @Override
