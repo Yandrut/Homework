@@ -1,5 +1,5 @@
 package MyList;
-
+@SuppressWarnings({"Uncheked",""})
 public class MyArrayList<T> implements MyList<T> {
     private T[] myArrayList;
     private int size;
@@ -86,5 +86,28 @@ public class MyArrayList<T> implements MyList<T> {
         }
         myArrayList[index] = element;
         return element;
+    }
+    @Override
+    public boolean addAll(int index, MyArrayList list) {
+        if (index < 0 || index > size) {
+            throw new IndexOutOfBoundsException("Index " + index + " out of bounds for length " + size);
+        }
+        if (this.isEmpty() || index == size) {
+            for (int i = 0; i < list.size; i++) {
+                this.add((T) list.get(i));
+                return true;
+            }
+        }
+        else if (index >= 1) {
+            size += list.size();
+            for (int i = this.size + list.size; i >= index; i--) {
+                this.myArrayList[i + list.size] = myArrayList[i];
+            }
+            for (int j = index; j < list.size(); j++) {
+                myArrayList[j] = (T) list.get(j);
+            }
+            return true;
+        }
+        return false;
     }
 }
