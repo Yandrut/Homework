@@ -1,14 +1,26 @@
 package MyList;
-@SuppressWarnings({"Uncheked",""})
-public class MyArrayList<T> implements MyList<T> {
+import java.util.Iterator;
+
+public class MyArrayList<T> implements MyList<T>, Iterable<T> {
     private T[] myArrayList;
     private int size;
-
+    public Iterator <T> iterator (){
+        return new Iterator<T>() {
+            public int index;
+            @Override
+            public boolean hasNext() {
+                return index < size;
+            }
+            @Override
+            public T next() {
+                return myArrayList[index++];
+            }
+        };
+    }
     public MyArrayList() {
         myArrayList = (T[]) new Object[10];
         size = 0;
     }
-
     @Override
     public void add(T t) {
         if (size == myArrayList.length) {

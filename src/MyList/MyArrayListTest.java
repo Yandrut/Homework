@@ -13,5 +13,10 @@ public class MyArrayListTest {
         }
         long duration = (System.nanoTime() - start)/1000000;
         System.out.println("Duration: " + duration + " ms.");
+        for (String s : list) {
+            String result = "";
+            result += s;
+            System.out.println(result);
+        }
     }
 }
