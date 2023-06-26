@@ -5,13 +5,22 @@ public class MyArrayListTest {
         long start = System.nanoTime();
 
         MyArrayList<String> list = new MyArrayList<String>();
-        for (int i = 0; i < 1000; i++) {
+        for (int i = 0; i < 20; i++) {
             list.add("Object" + i);
-        }
-        for (int i = 0; i < list.size(); i++) {
-            list.remove(i);
         }
         long duration = (System.nanoTime() - start)/1000000;
         System.out.println("Duration: " + duration + " ms.");
+//        for (String s : list) {
+//            System.out.print(s + " ");
+//        }
+        MyArrayList<String> al = new MyArrayList<String>();
+        al.add("One");
+        al.add("Two");
+        al.add("Three");
+        al.add("Four");
+        al.add("Five");
+        al.add("Six");
+        list.addAll(0,al);
+        System.out.println(list.size());
     }
 }
