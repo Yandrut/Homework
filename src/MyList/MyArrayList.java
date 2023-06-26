@@ -5,7 +5,7 @@ public class MyArrayList<T> implements MyList<T>, Iterable<T> {
     private T[] myArrayList;
     private int size;
     public Iterator <T> iterator (){
-        return new Iterator<T>() {
+        return new Iterator<>() {
             public int index;
             @Override
             public boolean hasNext() {
@@ -101,9 +101,12 @@ public class MyArrayList<T> implements MyList<T>, Iterable<T> {
     }
     @Override
     public boolean addAll(MyList<T> list) {
+        if (list != null) {
             for (int i = 0; i < list.size(); i++) {
-                this.add((T) list.get(i));
+                this.add(list.get(i));
             }
-        return false;
+            return true;
+        }
+        throw new IllegalArgumentException("Illegal type of MyList");
     }
 }
