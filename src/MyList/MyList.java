@@ -10,5 +10,5 @@ public interface MyList <T> {
     int indexOf(Object o);
     boolean isEmpty();
     T set(int index, T element);
-    boolean addAll(int index, MyArrayList<T> myArrayList);
+    boolean addAll(MyList<T> myArrayList);
 }

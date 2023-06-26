@@ -10,9 +10,9 @@ public class MyArrayListTest {
         }
         long duration = (System.nanoTime() - start)/1000000;
         System.out.println("Duration: " + duration + " ms.");
-//        for (String s : list) {
-//            System.out.print(s + " ");
-//        }
+        for (String s : list) {
+            System.out.println(s + " ");
+        }
         MyArrayList<String> al = new MyArrayList<String>();
         al.add("One");
         al.add("Two");
@@ -20,7 +20,7 @@ public class MyArrayListTest {
         al.add("Four");
         al.add("Five");
         al.add("Six");
-        list.addAll(0,al);
-        System.out.println(list.size());
+        list.addAll(al);
+        System.out.println("size: " + list.size());
     }
 }

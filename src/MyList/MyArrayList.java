@@ -100,26 +100,10 @@ public class MyArrayList<T> implements MyList<T>, Iterable<T> {
         return element;
     }
     @Override
-    public boolean addAll(int index, MyArrayList list) {
-        if (index < 0 || index > size) {
-            throw new IndexOutOfBoundsException("Index " + index + " out of bounds for length " + size);
-        }
-        size += list.size();
-        if (this.isEmpty() || index == size()) {
+    public boolean addAll(MyList<T> list) {
             for (int i = 0; i < list.size(); i++) {
                 this.add((T) list.get(i));
             }
-            return true;
-        }
-        else if (index >= 1) {
-            for (int i = this.size() + list.size() -1; i >= index; i--) {
-                this.myArrayList[i + list.size] = myArrayList[i];
-            }
-            for (int j = index; j < list.size(); j++) {
-                myArrayList[j] = (T) list.get(j);
-            }
-            return true;
-        }
         return false;
     }
 }
