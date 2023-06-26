@@ -1,6 +1,6 @@
 package MyList;
 @SuppressWarnings("unused")
-public interface MyList <T> {
+public interface MyList <T> extends Iterable <T>{
     void add(T t);
     T get (int index);
     int size();
@@ -10,5 +10,5 @@ public interface MyList <T> {
     int indexOf(Object o);
     boolean isEmpty();
     T set(int index, T element);
-    boolean addAll(MyList<T> myArrayList);
+    boolean addAll(MyList<T> myList);
 }

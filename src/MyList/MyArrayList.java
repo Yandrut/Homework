@@ -1,30 +1,20 @@
 package MyList;
+
 import java.util.Iterator;
 
-public class MyArrayList<T> implements MyList<T>, Iterable<T> {
+public class MyArrayList<T> implements MyList<T> {
     private T[] myArrayList;
     private int size;
-    public Iterator <T> iterator (){
-        return new Iterator<>() {
-            public int index;
-            @Override
-            public boolean hasNext() {
-                return index < size;
-            }
-            @Override
-            public T next() {
-                return myArrayList[index++];
-            }
-        };
-    }
+
     public MyArrayList() {
         myArrayList = (T[]) new Object[10];
         size = 0;
     }
+
     @Override
     public void add(T t) {
         if (size == myArrayList.length) {
-            T[] tempArray = (T[]) new Object[size + size/3];
+            T[] tempArray = (T[]) new Object[size + size / 3];
             for (int i = 0; i < size(); i++) {
                 tempArray[i] = myArrayList[i];
             }
@@ -33,6 +23,7 @@ public class MyArrayList<T> implements MyList<T>, Iterable<T> {
         myArrayList[size] = t;
         size++;
     }
+
     @Override
     public T get(int index) {
         if (index < size && index >= 0) {
@@ -40,19 +31,22 @@ public class MyArrayList<T> implements MyList<T>, Iterable<T> {
         }
         throw new IndexOutOfBoundsException("Index " + index + " out of bounds for length " + size);
     }
+
     @Override
     public int size() {
         return this.size;
     }
+
     @Override
     public boolean contains(Object toFind) {
-            for (int i = 0; i < size; i++) {
-                if (myArrayList[i].equals(toFind)) {
-                    return true;
-                }
+        for (int i = 0; i < size; i++) {
+            if (myArrayList[i].equals(toFind)) {
+                return true;
             }
+        }
         return false;
     }
+
     @Override
     public T remove(int index) {
         if (index >= size || index < 0) {
@@ -63,13 +57,14 @@ public class MyArrayList<T> implements MyList<T>, Iterable<T> {
         if (index == size - 1) {
             size--;
         } else {
-            for (int i = index; i < size -1; i++) {
-                myArrayList[i] = myArrayList[i+1];
+            for (int i = index; i < size - 1; i++) {
+                myArrayList[i] = myArrayList[i + 1];
             }
             size--;
-         }
+        }
         return removedObject;
     }
+
     @Override
     public boolean remove(Object object) {
         if (this.contains(object)) {
@@ -78,6 +73,7 @@ public class MyArrayList<T> implements MyList<T>, Iterable<T> {
         }
         return false;
     }
+
     @Override
     public int indexOf(Object object) {
         for (int i = 0; i < size; i++) {
@@ -87,18 +83,21 @@ public class MyArrayList<T> implements MyList<T>, Iterable<T> {
         }
         return -1;
     }
+
     @Override
     public boolean isEmpty() {
         return (size == 0);
     }
+
     @Override
     public T set(int index, T element) {
-        if (index < 0 || index > size-1) {
+        if (index < 0 || index > size - 1) {
             throw new IndexOutOfBoundsException("Index " + index + " out of bounds for length " + size);
         }
         myArrayList[index] = element;
         return element;
     }
+
     @Override
     public boolean addAll(MyList<T> list) {
         if (list != null) {
@@ -108,5 +107,24 @@ public class MyArrayList<T> implements MyList<T>, Iterable<T> {
             return true;
         }
         throw new IllegalArgumentException("Illegal type of MyList");
+    }
+
+    @Override
+    public Iterator<T> iterator() {
+        return new MyIterator();
+    }
+
+    private class MyIterator implements Iterator<T> {
+        private int index;
+
+        @Override
+        public boolean hasNext() {
+            return index < size();
+        }
+
+        @Override
+        public T next() {
+            return myArrayList[index++];
+        }
     }
 }
