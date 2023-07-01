@@ -1,5 +1,4 @@
 package MyList;
-
 import java.util.Iterator;
 
 public class MyArrayList<T> implements MyList<T> {
