@@ -25,10 +25,8 @@ public class MyArrayList<T> implements MyList<T> {
 
     @Override
     public T get(int index) {
-        if (index < size && index >= 0) {
+        checkOutOfBounds(index);
             return myArrayList[index];
-        }
-        throw new IndexOutOfBoundsException("Index " + index + " out of bounds for length " + size);
     }
 
     @Override
@@ -48,9 +46,7 @@ public class MyArrayList<T> implements MyList<T> {
 
     @Override
     public T remove(int index) {
-        if (index >= size || index < 0) {
-            throw new IndexOutOfBoundsException("Index " + index + " out of bounds for length " + size);
-        }
+       checkOutOfBounds(index);
         T removedObject = myArrayList[index];
 
         if (index == size - 1) {
@@ -106,6 +102,11 @@ public class MyArrayList<T> implements MyList<T> {
             return true;
         }
         throw new IllegalArgumentException("Illegal type of MyList");
+    }
+    private void checkOutOfBounds(int index) {
+        if (index < 0 || index > size) {
+            throw new IndexOutOfBoundsException("Index " + index + " out of bounds for length " + size);
+        }
     }
 
     @Override

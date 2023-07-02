@@ -10,7 +10,10 @@ public class MyLinkedListTest {
         ints.add("4");
         ints.add("5");
         ints.add("6");
+        ints.add("1488");
         System.out.println(ints.size());
         ints.get(1);
+        ints.get(4);
+        System.out.println(ints.indexOf("1488"));
     }
 }
