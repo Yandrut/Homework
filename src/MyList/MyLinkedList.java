@@ -101,7 +101,7 @@ public class MyLinkedList <T> implements MyList<T> {
             Node <T> nextOfCurrent = currentNode.next;
             int flag = 1;
 
-            // Removing at all the other size and index scenarios
+            // Removing at all the other possible scenarios
             while (currentNode != null) {
                 if (flag == index) {
                     forRemoval = currentNode;
