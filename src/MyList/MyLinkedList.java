@@ -78,33 +78,41 @@ public class MyLinkedList <T> implements MyList<T> {
     @Override
     public T remove(int index) {
         checkOutOfBounds(index);
+        size--;
+        Node <T> forRemoval;
         if (this.size() == 1) {
+            forRemoval = first;
             first = last = null;
+            return forRemoval.getCurrentElement();
         }
         else if (index == 0) {
+            forRemoval = first;
             first = first.next;
             first.next.previous = null;
+            return forRemoval.getCurrentElement();
         }
 
-        Node <T> currentNode = first;
+        Node <T> currentNode = first.next;
         Node <T> previousOfCurrent = currentNode.previous;
         Node <T> nextOfCurrent = currentNode.next;
         int flag = 1;
 
         while (currentNode != null) {
             if (flag == index) {
+                forRemoval = currentNode;
                 previousOfCurrent.next = currentNode.next;
                 nextOfCurrent.previous = previousOfCurrent;
+                return forRemoval.getCurrentElement();
             }
             else if (flag == size() -1) {
+                forRemoval = last;
                 previousOfCurrent.next = null;
                 last = last.previous;
+                return forRemoval.getCurrentElement();
             }
             currentNode = currentNode.next;
             flag++;
         }
-        size--;
-
         throw new NoSuchElementException("Given element is not present");
     }
 

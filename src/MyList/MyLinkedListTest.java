@@ -13,8 +13,10 @@ public class MyLinkedListTest {
         ints.add("1488");
         ints.get(1);
         ints.get(4);
-        for (String l : ints) {
-            System.out.println(l);
-        }
+        System.out.println(ints.size() + " Size before");
+        String n = ints.remove(8);
+        System.out.println(n);
+        System.out.println(ints.size() + " Size after");
+
     }
 }
