@@ -83,11 +83,14 @@ public class MyLinkedList <T> implements MyList<T> {
         }
         else if (index == 0) {
             first = first.next;
+            first.next.previous = null;
         }
+
         Node <T> currentNode = first;
         Node <T> previousOfCurrent = currentNode.previous;
         Node <T> nextOfCurrent = currentNode.next;
         int flag = 1;
+
         while (currentNode != null) {
             if (flag == index) {
                 previousOfCurrent.next = currentNode.next;
@@ -101,6 +104,7 @@ public class MyLinkedList <T> implements MyList<T> {
             flag++;
         }
         size--;
+
         throw new NoSuchElementException("Given element is not present");
     }
 
