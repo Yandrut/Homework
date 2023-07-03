@@ -44,11 +44,13 @@ public class MyLinkedList <T> implements MyList<T> {
 
     @Override
     public T get(int index) {
+        checkOutOfBounds(index);
+
         Node <T> currentNode = first;
         int flag = 0;
         while (currentNode != null) {
             if (flag == index) {
-                return (T) currentNode.getCurrentElement();
+                return currentNode.getCurrentElement();
             }
             currentNode = currentNode.next;
             flag++;
@@ -76,11 +78,26 @@ public class MyLinkedList <T> implements MyList<T> {
     @Override
     public T remove(int index) {
         checkOutOfBounds(index);
-
-        T removedObject = get(index);
-        removedObject = null;
+        if (index == 0) {
+            first = first.next;
+        }
+        Node <T> currentNode = first;
+        Node <T> previousOfCurrent = currentNode.previous;
+        Node <T> nextOfCurrent = currentNode.next;
+        int flag = 1;
+        while (currentNode != null) {
+            if (flag == index) {
+                previousOfCurrent.next = currentNode.next;
+                nextOfCurrent.previous = previousOfCurrent;
+            }
+            else if (flag == size() -1) {
+                previousOfCurrent.next = null;
+                last.previous = last;
+            }
+            currentNode = currentNode.next;
+            flag++;
+        }
         size--;
-
         throw new NoSuchElementException("Given element is not present");
     }
 
@@ -104,7 +121,7 @@ public class MyLinkedList <T> implements MyList<T> {
             currentNode = currentNode.next;
             flag++;
         }
-        throw new NoSuchElementException("Given element is not present");
+        return -1;
     }
 
     @Override
@@ -130,6 +147,12 @@ public class MyLinkedList <T> implements MyList<T> {
 
     @Override
     public boolean addAll(MyList<T> myList) {
+        if (myList != null) {
+            for (int i = 0; i < myList.size(); i++) {
+                this.add(myList.get(i));
+            }
+            return true;
+        }
         return false;
     }
 
@@ -145,15 +168,19 @@ public class MyLinkedList <T> implements MyList<T> {
     }
 
     private class MyIterator implements Iterator<T> {
-        private int index = 0;
 
         @Override
         public boolean hasNext() {
-            return index < size();
+            int index = 0;
+            return (index < size());
         }
 
         @Override
         public T next() {
+            Node <T> currentNode = first;
+            while (currentNode != null) {
+
+            }
             return null;
         }
     }

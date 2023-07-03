@@ -101,7 +101,7 @@ public class MyArrayList<T> implements MyList<T> {
             }
             return true;
         }
-        throw new IllegalArgumentException("Illegal type of MyList");
+        return false;
     }
     private void checkOutOfBounds(int index) {
         if (index < 0 || index > size) {
