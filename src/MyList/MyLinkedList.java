@@ -78,6 +78,7 @@ public class MyLinkedList <T> implements MyList<T> {
     @Override
     public T remove(int index) {
         checkOutOfBounds(index);
+        
         Node <T> forRemoval = new Node<>(null);
         // Removing the only element if size is 1
         if (this.size() == 1) {
