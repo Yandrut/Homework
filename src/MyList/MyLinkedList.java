@@ -32,7 +32,7 @@ public class MyLinkedList <T> implements MyList<T> {
     public void add(T t) {
         Node<T> currentNode = new Node<>(t);
             if (this.isEmpty()) {
-                this.first = last = currentNode;
+                first = last = currentNode;
             }
             else if (size >= 1) {
                last.next = currentNode;
@@ -78,7 +78,10 @@ public class MyLinkedList <T> implements MyList<T> {
     @Override
     public T remove(int index) {
         checkOutOfBounds(index);
-        if (index == 0) {
+        if (this.size() == 1) {
+            first = last = null;
+        }
+        else if (index == 0) {
             first = first.next;
         }
         Node <T> currentNode = first;
@@ -92,7 +95,7 @@ public class MyLinkedList <T> implements MyList<T> {
             }
             else if (flag == size() -1) {
                 previousOfCurrent.next = null;
-                last.previous = last;
+                last = last.previous;
             }
             currentNode = currentNode.next;
             flag++;
@@ -177,10 +180,6 @@ public class MyLinkedList <T> implements MyList<T> {
 
         @Override
         public T next() {
-            Node <T> currentNode = first;
-            while (currentNode != null) {
-
-            }
             return null;
         }
     }
