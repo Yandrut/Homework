@@ -78,42 +78,43 @@ public class MyLinkedList <T> implements MyList<T> {
     @Override
     public T remove(int index) {
         checkOutOfBounds(index);
-        size--;
-        Node <T> forRemoval;
+        Node <T> forRemoval = new Node<>(null);
+        // Removing the only element if size is 1
         if (this.size() == 1) {
             forRemoval = first;
             first = last = null;
-            return forRemoval.getCurrentElement();
         }
+        // Removing first element if size is more than 1
         else if (index == 0) {
             forRemoval = first;
             first = first.next;
             first.next.previous = null;
-            return forRemoval.getCurrentElement();
         }
+        //Removing last element
+        else if (index == size() -1) {
+            forRemoval = last;
+            last.previous.next = null;
+            last = last.previous;
+        } else {
+            Node <T> currentNode = first.next;
+            Node <T> previousOfCurrent = currentNode.previous;
+            Node <T> nextOfCurrent = currentNode.next;
+            int flag = 1;
 
-        Node <T> currentNode = first.next;
-        Node <T> previousOfCurrent = currentNode.previous;
-        Node <T> nextOfCurrent = currentNode.next;
-        int flag = 1;
-
-        while (currentNode != null) {
-            if (flag == index) {
-                forRemoval = currentNode;
-                previousOfCurrent.next = currentNode.next;
-                nextOfCurrent.previous = previousOfCurrent;
-                return forRemoval.getCurrentElement();
+            // Removing at all the other size and index scenarios
+            while (currentNode != null) {
+                if (flag == index) {
+                    forRemoval = currentNode;
+                    previousOfCurrent.next = currentNode.next;
+                    nextOfCurrent.previous = previousOfCurrent;
+                    break;
+                }
+                currentNode = currentNode.next;
+                flag++;
             }
-            else if (flag == size() -1) {
-                forRemoval = last;
-                previousOfCurrent.next = null;
-                last = last.previous;
-                return forRemoval.getCurrentElement();
-            }
-            currentNode = currentNode.next;
-            flag++;
         }
-        throw new NoSuchElementException("Given element is not present");
+        size--;
+        return forRemoval.getCurrentElement();
     }
 
     @Override
