@@ -1,6 +1,5 @@
 package MyList;
 import java.util.Iterator;
-import java.util.NoSuchElementException;
 
 public class MyLinkedList <T> implements MyList<T> {
 
@@ -48,14 +47,11 @@ public class MyLinkedList <T> implements MyList<T> {
 
         Node <T> currentNode = first;
         int flag = 0;
-        while (currentNode != null) {
-            if (flag == index) {
-                return currentNode.getCurrentElement();
-            }
+        while (currentNode != null && flag != index) {
             currentNode = currentNode.next;
             flag++;
         }
-        throw new NoSuchElementException("Element at index " + index + " is not present");
+        return currentNode.getCurrentElement();
     }
 
     @Override
@@ -78,22 +74,22 @@ public class MyLinkedList <T> implements MyList<T> {
     @Override
     public T remove(int index) {
         checkOutOfBounds(index);
-        
-        Node <T> forRemoval = new Node<>(null);
+
+        T forRemoval = null;
         // Removing the only element if size is 1
         if (this.size() == 1) {
-            forRemoval = first;
+            forRemoval = first.getCurrentElement();
             first = last = null;
         }
         // Removing first element if size is more than 1
         else if (index == 0) {
-            forRemoval = first;
-            first = first.next;
+            forRemoval = first.getCurrentElement();
             first.next.previous = null;
+            first = first.next;
         }
         //Removing last element
         else if (index == size() -1) {
-            forRemoval = last;
+            forRemoval = last.getCurrentElement();
             last.previous.next = null;
             last = last.previous;
         } else {
@@ -105,17 +101,17 @@ public class MyLinkedList <T> implements MyList<T> {
             // Removing at all the other possible scenarios
             while (currentNode != null) {
                 if (flag == index) {
-                    forRemoval = currentNode;
+                    forRemoval = currentNode.getCurrentElement();
                     previousOfCurrent.next = currentNode.next;
                     nextOfCurrent.previous = previousOfCurrent;
+                    currentNode = currentNode.next;
+                    flag++;
                     break;
                 }
-                currentNode = currentNode.next;
-                flag++;
             }
         }
         size--;
-        return forRemoval.getCurrentElement();
+        return forRemoval;
     }
 
     @Override
@@ -174,7 +170,7 @@ public class MyLinkedList <T> implements MyList<T> {
     }
 
     private void checkOutOfBounds(int index) {
-        if (index < 0 || index > size) {
+        if (index < 0 || index >= size) {
             throw new IndexOutOfBoundsException("Index " + index + " out of bounds for length " + size);
         }
     }
@@ -185,16 +181,22 @@ public class MyLinkedList <T> implements MyList<T> {
     }
 
     private class MyIterator implements Iterator<T> {
+        private Node <T> currentNode;
+
+        public MyIterator () {
+            currentNode = first;
+        }
 
         @Override
         public boolean hasNext() {
-            int index = 0;
-            return (index < size());
+            return (currentNode != null);
         }
 
         @Override
         public T next() {
-            return null;
+            T currentElement = currentNode.getCurrentElement();
+              currentNode = currentNode.next;
+          return currentElement;
         }
     }
 }

@@ -2,21 +2,22 @@ package MyList;
 
 public class MyLinkedListTest {
     public static void main(String[] args) {
-        MyList<String> ints = new MyLinkedList<String>();
-        ints.add("0");
-        ints.add("1");
-        ints.add("2");
-        ints.add("3");
-        ints.add("4");
-        ints.add("5");
-        ints.add("6");
-        ints.add("1488");
-        ints.get(1);
-        ints.get(4);
-        System.out.println(ints.size() + " Size before");
-        String n = ints.remove(8);
-        System.out.println(n);
-        System.out.println(ints.size() + " Size after");
+        MyList<String> strings = new MyLinkedList<String>();
+        strings.add("first");
+        strings.add("second");
+        strings.add("third");
+        strings.add("fourth");
+        strings.add("fifth");
+        strings.add("sixth");
+        strings.add("seventh");
+        strings.add("ninth");
 
+        for (String i : strings) {
+            System.out.println(strings.remove(i));
+            System.out.println(strings.size());
+        }
+//        for (String i : strings)
+//            System.out.println(strings.remove(strings.indexOf(i)));
+//        }
     }
 }
