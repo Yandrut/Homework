@@ -1,24 +1,24 @@
-package MyList;
+package CustomDataBase.MyList;
 import java.util.Iterator;
 
-public class MyLinkedList <T> implements MyList<T> {
+public class MyLinkedList <E> implements MyList<E> {
 
-    private static class Node<T> {
-        private T currentElement;
-        private Node<T> previous;
-        private Node<T> next;
+    private static class Node<E> {
+        private E currentElement;
+        private Node<E> previous;
+        private Node<E> next;
 
-        public Node (T element) {
+        public Node (E element) {
             this.currentElement = element;
         }
 
-        public T getCurrentElement() {
+        public E getCurrentElement() {
             return currentElement;
         }
     }
 
-    private Node<T> first;
-    private Node<T> last;
+    private Node<E> first;
+    private Node<E> last;
     private int size;
 
     public MyLinkedList() {
@@ -28,8 +28,8 @@ public class MyLinkedList <T> implements MyList<T> {
     }
 
     @Override
-    public void add(T t) {
-        Node<T> currentNode = new Node<>(t);
+    public void add(E t) {
+        Node<E> currentNode = new Node<>(t);
             if (this.isEmpty()) {
                 first = last = currentNode;
             }
@@ -42,10 +42,10 @@ public class MyLinkedList <T> implements MyList<T> {
     }
 
     @Override
-    public T get(int index) {
+    public E get(int index) {
         checkOutOfBounds(index);
 
-        Node <T> currentNode = first;
+        Node <E> currentNode = first;
         int flag = 0;
         while (currentNode != null && flag != index) {
             currentNode = currentNode.next;
@@ -61,7 +61,7 @@ public class MyLinkedList <T> implements MyList<T> {
 
     @Override
     public boolean contains(Object obj) {
-        Node <T> currentNode = first;
+        Node <E> currentNode = first;
         while (currentNode != null) {
             if (obj.equals(currentNode.getCurrentElement())) {
                 return true;
@@ -72,10 +72,10 @@ public class MyLinkedList <T> implements MyList<T> {
     }
 
     @Override
-    public T remove(int index) {
+    public E remove(int index) {
         checkOutOfBounds(index);
 
-        T forRemoval = null;
+        E forRemoval = null;
         // Removing the only element if size is 1
         if (this.size() == 1) {
             forRemoval = first.getCurrentElement();
@@ -93,9 +93,9 @@ public class MyLinkedList <T> implements MyList<T> {
             last.previous.next = null;
             last = last.previous;
         } else {
-            Node <T> currentNode = first.next;
-            Node <T> previousOfCurrent = currentNode.previous;
-            Node <T> nextOfCurrent = currentNode.next;
+            Node <E> currentNode = first.next;
+            Node <E> previousOfCurrent = currentNode.previous;
+            Node <E> nextOfCurrent = currentNode.next;
             int flag = 1;
 
             // Removing at all the other possible scenarios
@@ -125,7 +125,7 @@ public class MyLinkedList <T> implements MyList<T> {
 
     @Override
     public int indexOf(Object o) {
-        Node <T> currentNode = first;
+        Node <E> currentNode = first;
         int flag = 0;
         while (currentNode != null) {
             if (o.equals(currentNode.getCurrentElement())) {
@@ -143,9 +143,9 @@ public class MyLinkedList <T> implements MyList<T> {
     }
 
     @Override
-    public T set(int index, T element) {
+    public E set(int index, E element) {
         checkOutOfBounds(index);
-        Node <T> currentNode = first;
+        Node <E> currentNode = first;
         int flag = 0;
         while (currentNode != null) {
             if (flag == index) {
@@ -159,7 +159,7 @@ public class MyLinkedList <T> implements MyList<T> {
     }
 
     @Override
-    public boolean addAll(MyList<T> myList) {
+    public boolean addAll(MyList<E> myList) {
         if (myList != null) {
             for (int i = 0; i < myList.size(); i++) {
                 this.add(myList.get(i));
@@ -176,12 +176,12 @@ public class MyLinkedList <T> implements MyList<T> {
     }
 
     @Override
-    public Iterator<T> iterator() {
+    public Iterator<E> iterator() {
         return new MyIterator();
     }
 
-    private class MyIterator implements Iterator<T> {
-        private Node <T> currentNode;
+    private class MyIterator implements Iterator<E> {
+        private Node <E> currentNode;
 
         public MyIterator () {
             currentNode = first;
@@ -193,8 +193,8 @@ public class MyLinkedList <T> implements MyList<T> {
         }
 
         @Override
-        public T next() {
-            T currentElement = currentNode.getCurrentElement();
+        public E next() {
+            E currentElement = currentNode.getCurrentElement();
               currentNode = currentNode.next;
           return currentElement;
         }

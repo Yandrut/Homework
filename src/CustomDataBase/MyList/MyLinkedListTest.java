@@ -1,8 +1,8 @@
-package MyList;
+package CustomDataBase.MyList;
 
 public class MyLinkedListTest {
     public static void main(String[] args) {
-        MyList<String> strings = new MyLinkedList<String>();
+        MyList<String> strings = new MyLinkedList<>();
         strings.add("first");
         strings.add("second");
         strings.add("third");
